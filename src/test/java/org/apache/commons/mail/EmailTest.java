@@ -21,7 +21,7 @@ class EmailTest {
         String testAddress = "ccemail@gmail.com";
         this.testEmail.addCc(testAddress);
 
-        Assertions.assertEquals(testAddress, this.testEmail.getCcAddresses().getFirst().getAddress());
+        Assertions.assertEquals(testAddress, this.testEmail.getCcAddresses().get(0).getAddress());
     }
 
     @Test
@@ -115,8 +115,8 @@ class EmailTest {
 
         this.testEmail.addReplyTo(testAddress, testName);
 
-        Assertions.assertEquals(testAddress, this.testEmail.getReplyToAddresses().getFirst().getAddress());
-        Assertions.assertEquals(testName, this.testEmail.getReplyToAddresses().getFirst().getPersonal());
+        Assertions.assertEquals(testAddress, this.testEmail.getReplyToAddresses().get(0).getAddress());
+        Assertions.assertEquals(testName, this.testEmail.getReplyToAddresses().get(0).getPersonal());
     }
 
     @Test
