@@ -300,6 +300,12 @@
             <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+	      <groupId>org.junit.vintage</groupId>
+	      <artifactId>junit-vintage-engine</artifactId>
+	      <version>RELEASE</version>
+	      <scope>test</scope>
+	    </dependency>
     </dependencies>
 
     <properties>
@@ -326,7 +332,7 @@
                     <excludes>
                         <exclude>org/apache/commons/mail/mocks/*</exclude>
                         <exclude>org/apache/commons/mail/settings/*</exclude>
-                        <exclude>**/Abstract*Test.java</exclude>
+                        
                     </excludes>
                 </configuration>
             </plugin>
