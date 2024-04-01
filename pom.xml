@@ -331,10 +331,16 @@
                     <!-- exclude test case support classes -->
                     <excludes>
                         <exclude>org/apache/commons/mail/mocks/*</exclude>
-                        <exclude>org/apache/commons/mail/settings/*</exclude>
-                        
+                        <exclude>org/apache/commons/mail/settings/*</exclude>     
                     </excludes>
                 </configuration>
+                <dependencies>
+	                <dependency>
+	                    <groupId>org.junit.jupiter</groupId>
+	                    <artifactId>junit-jupiter-engine</artifactId>
+	                    <version>5.4.0</version>
+	                </dependency>
+            	</dependencies>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>

@@ -7,7 +7,7 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import java.util.*;
 
-class EmailTest {
+public class EmailTest {
     private final Email testEmail = new Email() {
         @Override
         public Email setMsg(String msg) {
@@ -17,7 +17,7 @@ class EmailTest {
 
 
     @Test
-    void addCc() throws Exception {
+    public void addCc() throws Exception {
         String testAddress = "ccemail@gmail.com";
         this.testEmail.addCc(testAddress);
 
@@ -25,7 +25,7 @@ class EmailTest {
     }
 
     @Test
-    void getMailSessionEmpty() throws Exception {
+    public void getMailSessionEmpty() throws Exception {
 
         this.testEmail.setHostName("localhost");
 
@@ -35,7 +35,7 @@ class EmailTest {
     }
 
     @Test
-    void getMailSessionFull() throws Exception {
+    public void getMailSessionFull() throws Exception {
 
         this.testEmail.setHostName("localhost");
 
@@ -54,14 +54,14 @@ class EmailTest {
     }
 
     @Test
-    void getMailSessionNullHost(){
+    public void getMailSessionNullHost(){
 
         Assertions.assertThrows(EmailException.class, this.testEmail::getMailSession);
 
     }
 
     @Test
-    void getMailSessionNotNull() throws Exception {
+    public void getMailSessionNotNull() throws Exception {
 
         Properties testProperties = new Properties();
 
@@ -73,7 +73,7 @@ class EmailTest {
 
 
     @Test
-    void setFrom() throws Exception {
+    public void setFrom() throws Exception {
         String testAddress = "fromemail@gmail.com";
         String testName = "Set From";
 
@@ -85,7 +85,7 @@ class EmailTest {
     }
 
     @Test
-    void addBcc() throws Exception {
+    public void addBcc() throws Exception {
         //test valid email list
         String[] testAddresses = {"bcc1email@gmail.com", "bcc2email@gmail.com", "bcc3email@gmail.com"};
         this.testEmail.addBcc(testAddresses);
@@ -94,13 +94,13 @@ class EmailTest {
     }
 
     @Test
-    void addBccNull(){
+    public void addBccNull(){
         //test with null list
         Assertions.assertThrows(EmailException.class, () -> this.testEmail.addBcc((String[]) null));
     }
 
     @Test
-    void addBccEmpty(){
+    public void addBccEmpty(){
         //test with empty list
         String[] zeroAddresses = new String[0];
         Assertions.assertThrows(EmailException.class, () -> this.testEmail.addBcc(zeroAddresses));
@@ -109,7 +109,7 @@ class EmailTest {
 
 
     @Test
-    void addReplyTo() throws Exception {
+    public void addReplyTo() throws Exception {
         String testAddress = "replytoemail@gmail.com";
         String testName = "Reply To";
 
@@ -120,7 +120,7 @@ class EmailTest {
     }
 
     @Test
-    void addHeader() {
+    public void addHeader() {
         //test valid options
         String testName = "JTestHeader";
         String testValue = "JTestValue";
@@ -135,7 +135,7 @@ class EmailTest {
     }
 
     @Test
-    void buildMimeMessageEmpty() throws Exception {
+    public void buildMimeMessageEmpty() throws Exception {
         //required message properties
         this.testEmail.setHostName("localhost");
         this.testEmail.setFrom("testfrom@gmail.com");
@@ -153,7 +153,7 @@ class EmailTest {
     }
 
     @Test
-    void buildMimeMessageBody() throws Exception {
+    public void buildMimeMessageBody() throws Exception {
         //required message properties
         this.testEmail.setHostName("localhost");
         this.testEmail.setFrom("testfrom@gmail.com");
@@ -167,7 +167,7 @@ class EmailTest {
     }
 
     @Test
-    void buildMimeMessageFull() throws Exception {
+    public void buildMimeMessageFull() throws Exception {
         //required message properties
         this.testEmail.setHostName("localhost");
         this.testEmail.setFrom("testfrom@gmail.com");
@@ -189,7 +189,7 @@ class EmailTest {
     }
 
     @Test
-    void buildMimeMessagePopError() throws Exception {
+    public void buildMimeMessagePopError() throws Exception {
         //required message properties
         this.testEmail.setHostName("localhost");
         this.testEmail.setFrom("testfrom@gmail.com");
@@ -202,7 +202,7 @@ class EmailTest {
     }
 
     @Test
-    void buildMimeMessageNoFrom(){
+    public void buildMimeMessageNoFrom(){
         this.testEmail.setHostName("localhost");
 
         //test missing from address
@@ -210,7 +210,7 @@ class EmailTest {
     }
 
     @Test
-    void buildMimeMessageNoReceiver() throws Exception {
+    public void buildMimeMessageNoReceiver() throws Exception {
         this.testEmail.setHostName("localhost");
         this.testEmail.setFrom("testfrom@gmail.com");
 
@@ -219,7 +219,7 @@ class EmailTest {
     }
 
     @Test
-    void getSentDate() {
+    public void getSentDate() {
         Date testSentDate = new Date();
 
         this.testEmail.setSentDate(null); //test null
@@ -229,13 +229,13 @@ class EmailTest {
     }
 
     @Test
-    void getSentDateNull() {
+    public void getSentDateNull() {
 
         Assertions.assertInstanceOf(Date.class, this.testEmail.getSentDate());
     }
 
     @Test
-    void getHostName() {
+    public void getHostName() {
         String testHostName = "localhost";
 
         this.testEmail.setHostName(testHostName);
@@ -244,7 +244,7 @@ class EmailTest {
     }
     
     @Test
-    void getHostNameWithSession() {
+    public void getHostNameWithSession() {
         Properties testProps = new Properties();
         this.testEmail.setMailSession(Session.getInstance(testProps));
 
@@ -252,13 +252,13 @@ class EmailTest {
     }
 
     @Test
-    void getHostNameNull() {
+    public void getHostNameNull() {
 
         Assertions.assertNull(this.testEmail.getHostName());
     }
 
     @Test
-    void getSocketConnectionTimeout() {
+    public void getSocketConnectionTimeout() {
         int testTimeout = 5;
 
         this.testEmail.setSocketConnectionTimeout(testTimeout);
